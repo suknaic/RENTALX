@@ -6,6 +6,6 @@ const app = express();
 
 app.use(express.json());
 
-app.use(CategoriRouter);
+app.use('/categories', CategoriRouter);
 
 app.listen(3333, () => console.log('server is running on port 3333 ✔'));
