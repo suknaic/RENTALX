@@ -7,7 +7,7 @@ interface IRequest {
 
 class CreateCategoryService {
   constructor(private categoryRepository: ICategoryRepository) {
-    console.log();
+    ('');
   }
 
   execute({ name, description }: IRequest): void {
