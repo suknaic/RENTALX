@@ -1,17 +1,16 @@
 import { Router } from 'express';
 
 // import { CategoriRepository } from '../modules/cars/repositories/CategorieRepositories';
-import { CategoryController } from '../modules/cars/useCases/createCategory';
+import { createCategoryController } from '../modules/cars/useCases/createCategory';
+import { listCategoryController } from '../modules/cars/useCases/listCategory';
 
 const CategoriRouter = Router();
 CategoriRouter.post('/', (request, response) => {
-  return CategoryController.handle(request, response);
+  return createCategoryController.handle(request, response);
 });
 
-// CategoriRouter.get('/', (request, response) => {
-//   const all = categoryRepository.list();
-
-//   return response.json(all);
-// });
+CategoriRouter.get('/', (request, response) => {
+  return listCategoryController.handle(request, response);
+});
 
 export { CategoriRouter };
