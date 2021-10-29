@@ -1,8 +1,12 @@
 import { Router } from 'express';
+import multer from 'multer';
 
-// import { CategoriRepository } from '../modules/cars/repositories/CategorieRepositories';
 import { createCategoryController } from '../modules/cars/useCases/createCategory';
 import { listCategoryController } from '../modules/cars/useCases/listCategory';
+
+const upload = multer({
+  dest: '/tmp',
+});
 
 const CategoriRouter = Router();
 CategoriRouter.post('/', (request, response) => {
@@ -11,6 +15,13 @@ CategoriRouter.post('/', (request, response) => {
 
 CategoriRouter.get('/', (request, response) => {
   return listCategoryController.handle(request, response);
+});
+
+CategoriRouter.post('/import', upload.single('file'), (request, response) => {
+  const { file } = request;
+
+  console.log(file);
+  return response.send();
 });
 
 export { CategoriRouter };
