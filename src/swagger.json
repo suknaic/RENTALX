@@ -1,0 +1,12 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Rentalx Documentation",
+    "description": "This is an API Rest Full",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Felipe Suknaic",
+      "email": "fsuknaic@hotmail.com"
+    }
+  }
+}
