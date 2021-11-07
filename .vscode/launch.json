@@ -7,13 +7,13 @@
     {
       "type": "node",
       "request": "attach",
-      "name": "DEBUG RENTALX APP",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "outFiles": [
-        "${workspaceFolder}/**/*.js"
-      ]
-    }
+      "name": "Docker: Attach to Node",
+      "remoteRoot": "/usr/app/",
+      "port": 9229,
+      "address": "localhost",
+      "sourceMapPathOverrides": {
+        "/usr/app/*": "${workspaceRoot}/*"
+      }
+   }
   ]
 }
