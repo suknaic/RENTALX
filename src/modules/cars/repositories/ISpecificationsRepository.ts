@@ -1,4 +1,4 @@
-import { ICreateSpecificationsDTO } from '../../../dtos/ICreateSpecificationsDTO';
+import { ICreateSpecificationsDTO } from '../dtos/ICreateSpecificationsDTO';
 import { Specification } from '../entities/Specification';
 
 interface ISpecificationsRepository {

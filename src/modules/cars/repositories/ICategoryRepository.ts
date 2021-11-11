@@ -1,4 +1,4 @@
-import { ICreateCategoriDTO } from '../../../dtos/ICreateCategoryDTO';
+import { ICreateCategoriDTO } from '../dtos/ICreateCategoryDTO';
 import { Category } from '../entities/Category';
 
 interface ICategoryRepository {
