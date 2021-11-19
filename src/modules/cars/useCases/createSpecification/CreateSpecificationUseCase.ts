@@ -3,7 +3,7 @@ import { inject, injectable } from 'tsyringe';
 import { ISpecificationsRepository } from '../../repositories/ISpecificationsRepository';
 
 interface IRequest {
-  name: string;
+  name?: string;
   description: string;
 }
 
@@ -18,9 +18,8 @@ class CreateSpecificationUseCase {
     const specificationAlredyExists =
       await this.SpecificationRepository.findByName(name);
 
-    if (specificationAlredyExists) {
+    if (specificationAlredyExists)
       throw new Error('Specification Alredy Exists');
-    }
 
     await this.SpecificationRepository.create({ name, description });
   }
