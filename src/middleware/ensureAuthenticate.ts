@@ -31,6 +31,9 @@ async function ensureAuthenticate(
 
     if (!user) throw new AppError('User does not exists', 401);
 
+    request.user = {
+      id: user.id,
+    };
     next();
   } catch {
     throw new AppError('token invalid!');
