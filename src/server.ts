@@ -4,9 +4,10 @@ import express, { NextFunction, Request, Response } from 'express';
 import swaggerUi from 'swagger-ui-express';
 
 import './database';
-import './shared/container';
+import '@shared/container';
 
-import { AppError } from './error/AppError';
+import { AppError } from '@error/AppError';
+
 import routes from './routes';
 import swaggerFile from './swagger.json';
 
