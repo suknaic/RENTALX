@@ -35,7 +35,7 @@ class AuthenticateUserUseCase {
     if (!passwordMatch) throw new AppError('Password Invalid!');
 
     const token = sign({}, '2e0d7af2f8999be5d6af7f5c99ef27d4', {
-      subject: user.id,
+      subject: `${user.id}`,
       expiresIn: '1d',
     });
 
