@@ -1,6 +1,6 @@
-import { AppError } from '../../../../error/AppError';
-import { User } from '../../entities/User';
-import { FakeUserRepository } from '../../repositories/Fake/FakeUserRepository';
+import { AppError } from '@error/AppError';
+import { FakeUserRepository } from '@modules/accounts/repositories/Fake/FakeUserRepository';
+
 import { CreateUserUseCase } from '../createuser/CreateUserUseCase';
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 
