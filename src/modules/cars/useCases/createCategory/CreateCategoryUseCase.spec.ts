@@ -1,6 +1,6 @@
 import { AppError } from '@error/AppError';
+import { FakeCategoryRepository } from '@modules/cars/repositories/Fake/FakeCategoryRepositories';
 
-import { FakeCategoryRepository } from '../../repositories/Fake/FakeCategoryRepositories';
 import { CreateCategoryUseCase } from './CreateCategoryUseCase';
 
 let categoryRepository: FakeCategoryRepository;
