@@ -1,3 +1,5 @@
+import { inject, injectable } from 'tsyringe';
+
 import { ICarRepository } from '@modules/cars/repositories/ICarRepository';
 import { AppError } from '@shared/error/AppError';
 
@@ -8,10 +10,15 @@ interface IRequest {
   license_plate: string;
   fine_amount: number;
   brand: string;
+  category_id: string;
 }
 
+@injectable()
 class CreateCarUseCase {
-  constructor(private carRepository: ICarRepository) {}
+  constructor(
+    @inject('ICarRepository')
+    private carRepository: ICarRepository
+  ) {}
 
   async execulte({
     name,
@@ -20,6 +27,7 @@ class CreateCarUseCase {
     license_plate,
     fine_amount,
     brand,
+    category_id,
   }: IRequest): Promise<void> {
     const carAlredyExists = await this.carRepository.findByLincensePlate(
       license_plate
@@ -34,6 +42,7 @@ class CreateCarUseCase {
       license_plate,
       fine_amount,
       brand,
+      category_id,
     });
   }
 }

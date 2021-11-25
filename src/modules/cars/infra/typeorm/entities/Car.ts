@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryColumn,
 } from 'typeorm';
@@ -35,7 +36,11 @@ class Car {
   @Column()
   brand: string;
 
-  @ManyToOne(() => Category, 'id')
+  @ManyToOne(() => Category)
+  @JoinColumn({ name: 'category_id' })
+  category: Category;
+
+  @Column()
   category_id: string;
 
   @CreateDateColumn()
@@ -45,7 +50,6 @@ class Car {
     if (!this.id) {
       this.id = uuidv4();
       this.available = true;
-      this.created_at = new Date();
     }
   }
 }

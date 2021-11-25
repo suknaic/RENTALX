@@ -5,6 +5,7 @@ interface ICreateCarDTO {
   license_plate: string;
   fine_amount: number;
   brand: string;
+  category_id: string;
 }
 
 export { ICreateCarDTO };

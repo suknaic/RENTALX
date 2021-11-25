@@ -9,9 +9,9 @@ class FakeCarRepository implements ICarRepository {
   constructor() {
     this.carRepository = [];
   }
-  async findByLincensePlate(lincese_plate: string): Promise<Car> {
+  async findByLincensePlate(license_plate: string): Promise<Car> {
     const car = this.carRepository.find(
-      (car) => car.license_plate === lincese_plate
+      (car) => car.license_plate === license_plate
     );
 
     return car;
@@ -23,6 +23,7 @@ class FakeCarRepository implements ICarRepository {
     license_plate,
     fine_amount,
     brand,
+    category_id,
   }: ICreateCarDTO): Promise<void> {
     const car = new Car();
 
@@ -33,6 +34,7 @@ class FakeCarRepository implements ICarRepository {
       license_plate,
       fine_amount,
       brand,
+      category_id,
     });
 
     this.carRepository.push(car);

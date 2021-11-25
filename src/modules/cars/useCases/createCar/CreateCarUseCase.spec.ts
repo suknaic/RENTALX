@@ -23,7 +23,7 @@ describe('[CreateCarUseCase]', () => {
     });
   });
 
-  it('should not be able to create a new car with license_plate some', async () => {
+  it('should not be able to create a new car with license_plate existente', async () => {
     await createCarUseCase.execulte({
       name: 'car test',
       description: 'test to create a new car',
