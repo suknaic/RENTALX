@@ -14,12 +14,13 @@ describe('[CreateCarUseCase]', () => {
 
   it('should be able to create a new Car', async () => {
     await createCarUseCase.execulte({
-      name: 'car test',
-      description: 'test to create a new car',
-      dayly_rate: 10,
-      license_plate: 'test-xxxx-xxxx',
-      fine_amount: 650,
-      brand: 'brand-test',
+      name: 'nameCar',
+      description: 'descriptionCar',
+      dayly_rate: 100,
+      license_plate: 'abcd-1234',
+      fine_amount: 500,
+      brand: 'ford',
+      category_id: 'asdiasdiasdausdasd',
     });
   });
 
@@ -31,6 +32,7 @@ describe('[CreateCarUseCase]', () => {
       license_plate: 'test-1234-1234',
       fine_amount: 650,
       brand: 'brand-test',
+      category_id: 'asdiasdiasdausdasd',
     });
 
     expect(async () => {
@@ -41,6 +43,7 @@ describe('[CreateCarUseCase]', () => {
         license_plate: 'test-1234-1234',
         fine_amount: 700,
         brand: 'brand-test',
+        category_id: 'asdiasdiasdausdasd',
       });
     }).rejects.toBeInstanceOf(AppError);
   });
@@ -53,6 +56,7 @@ describe('[CreateCarUseCase]', () => {
       license_plate: 'test-1234-1234',
       fine_amount: 700,
       brand: 'brand-test',
+      category_id: 'asdiasdiasdausdasd',
     });
 
     const carTest = await fakeCarRepository.findByLincensePlate(

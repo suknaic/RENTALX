@@ -1,5 +1,5 @@
-import { AppError } from '@error/AppError';
 import { FakeCategoryRepository } from '@modules/cars/repositories/Fake/FakeCategoryRepositories';
+import { AppError } from '@shared/error/AppError';
 
 import { CreateCategoryUseCase } from './CreateCategoryUseCase';
 
