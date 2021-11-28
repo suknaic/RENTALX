@@ -1,14 +1,14 @@
 import { FakeCarRepository } from '@modules/cars/repositories/Fake/FakeCarRepository';
 
-import { ListCarUseCase } from './ListCarsUseCase';
+import { ListAvailableCarsUseCase } from './ListAvailableCarsUseCase';
 
-describe('[ListCarUseCase]', () => {
+describe('[ListAvailableCarUseCase]', () => {
   let fakeCarsRepository: FakeCarRepository;
-  let listCarUseCase: ListCarUseCase;
+  let listAvailableCarUseCase: ListAvailableCarsUseCase;
 
   beforeEach(async () => {
     fakeCarsRepository = new FakeCarRepository();
-    listCarUseCase = new ListCarUseCase(fakeCarsRepository);
+    listAvailableCarUseCase = new ListAvailableCarsUseCase(fakeCarsRepository);
 
     await fakeCarsRepository.create({
       name: 'palio',
@@ -31,7 +31,7 @@ describe('[ListCarUseCase]', () => {
   });
 
   it('should be able to list all car availability', async () => {
-    const allCarsAvailability = await listCarUseCase.execute({});
+    const allCarsAvailability = await listAvailableCarUseCase.execute({});
 
     expect(allCarsAvailability).toHaveLength(2);
     allCarsAvailability.forEach((car) =>
@@ -40,7 +40,7 @@ describe('[ListCarUseCase]', () => {
   });
 
   it('should be able to list all car availabiliti for name', async () => {
-    const allCarsAvailability = await listCarUseCase.execute({
+    const allCarsAvailability = await listAvailableCarUseCase.execute({
       name: 'palio',
     });
 
@@ -51,7 +51,7 @@ describe('[ListCarUseCase]', () => {
   });
 
   it('should be able to list all car availabiliti for brand', async () => {
-    const carAvailable = await listCarUseCase.execute({
+    const carAvailable = await listAvailableCarUseCase.execute({
       brand: 'ford',
     });
 
@@ -64,7 +64,7 @@ describe('[ListCarUseCase]', () => {
   });
 
   it('should be able to list all car availabiliti for category_id', async () => {
-    const allCarsAvailability = await listCarUseCase.execute({
+    const allCarsAvailability = await listAvailableCarUseCase.execute({
       category_id: 'b205d457-452a-4e65-a7d1-b331b627307e',
     });
 
