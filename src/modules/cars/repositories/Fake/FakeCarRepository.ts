@@ -9,6 +9,28 @@ class FakeCarRepository implements ICarRepository {
   constructor() {
     this.carRepository = [];
   }
+  async findAvailable(
+    category_id?: string,
+    name?: string,
+    brand?: string
+  ): Promise<Car[]> {
+    const carsAvailability = this.carRepository.filter((car) => {
+      if (
+        (name && car.name === name && car.available === true) ||
+        (brand && car.brand === brand && car.available === true) ||
+        (category_id &&
+          car.category_id === category_id &&
+          car.available === true) ||
+        (!name && !brand && !category_id && car.available === true)
+      ) {
+        return car;
+      }
+
+      return null;
+    });
+
+    return carsAvailability;
+  }
   async findByLincensePlate(license_plate: string): Promise<Car> {
     const car = this.carRepository.find(
       (car) => car.license_plate === license_plate
