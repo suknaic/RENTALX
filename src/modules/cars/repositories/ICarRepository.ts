@@ -3,6 +3,7 @@ import { Car } from '../infra/typeorm/entities/Car';
 
 interface ICarRepository {
   create({
+    id,
     name,
     description,
     dayly_rate,
@@ -10,13 +11,15 @@ interface ICarRepository {
     fine_amount,
     brand,
     category_id,
-  }: ICreateCarDTO): Promise<void>;
+    specifications,
+  }: ICreateCarDTO): Promise<Car>;
   findByLincensePlate(license_plate: string): Promise<Car>;
   findAvailable(
     category_id?: string,
     name?: string,
     brand?: string
   ): Promise<Car[]>;
+  findById(id: string): Promise<Car>;
 }
 
 export { ICarRepository };

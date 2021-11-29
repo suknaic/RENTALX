@@ -9,6 +9,11 @@ class FakeCarRepository implements ICarRepository {
   constructor() {
     this.carRepository = [];
   }
+  async findById(id: string): Promise<Car> {
+    const car = this.carRepository.find((car) => car.id === id);
+    return car;
+  }
+
   async findAvailable(
     category_id?: string,
     name?: string,
@@ -39,6 +44,7 @@ class FakeCarRepository implements ICarRepository {
     return car;
   }
   async create({
+    id,
     name,
     description,
     dayly_rate,
@@ -46,10 +52,12 @@ class FakeCarRepository implements ICarRepository {
     fine_amount,
     brand,
     category_id,
-  }: ICreateCarDTO): Promise<void> {
+    specifications,
+  }: ICreateCarDTO): Promise<Car> {
     const car = new Car();
 
     Object.assign(car, {
+      id,
       name,
       description,
       dayly_rate,
@@ -57,9 +65,12 @@ class FakeCarRepository implements ICarRepository {
       fine_amount,
       brand,
       category_id,
+      specifications,
     });
 
     this.carRepository.push(car);
+
+    return car;
   }
 }
 

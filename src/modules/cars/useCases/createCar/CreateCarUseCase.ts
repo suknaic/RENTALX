@@ -1,5 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
+import { Car } from '@modules/cars/infra/typeorm/entities/Car';
 import { ICarRepository } from '@modules/cars/repositories/ICarRepository';
 import { AppError } from '@shared/error/AppError';
 
@@ -28,14 +29,14 @@ class CreateCarUseCase {
     fine_amount,
     brand,
     category_id,
-  }: IRequest): Promise<void> {
+  }: IRequest): Promise<Car> {
     const carAlredyExists = await this.carRepository.findByLincensePlate(
       license_plate
     );
 
     if (carAlredyExists) throw new AppError('Car alredy Existis');
 
-    await this.carRepository.create({
+    const car = await this.carRepository.create({
       name,
       description,
       dayly_rate,
@@ -44,6 +45,8 @@ class CreateCarUseCase {
       brand,
       category_id,
     });
+
+    return car;
   }
 }
 
