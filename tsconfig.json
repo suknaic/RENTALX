@@ -6,21 +6,11 @@
     "module": "commonjs",
     "baseUrl": "src",
     "paths": {
-      "@modules/*": [
-        "modules/*"
-      ],
-      "@config/*": [
-        "config/*"
-      ],
-      "@shared/*": [
-        "shared/*"
-      ],
-      "@middleware/*": [
-        "middleware/*"
-      ],
-      "@utils/*": [
-        "utils/*"
-      ]
+      "@modules/*": ["modules/*"],
+      "@config/*": ["config/*"],
+      "@shared/*": ["shared/*"],
+      "@middleware/*": ["middleware/*"],
+      "@utils/*": ["utils/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true,
