@@ -13,16 +13,16 @@ describe('[AuthenticateUserUseCase]', () => {
     fakeUserRepository = new FakeUserRepository();
     authenticateUserUseCase = new AuthenticateUserUseCase(fakeUserRepository);
     createUserUseCase = new CreateUserUseCase(fakeUserRepository);
+  });
 
+  it('should be able to authenticate a user', async () => {
     await createUserUseCase.execute({
       name: 'user test',
       email: 'test@rentalx.com',
       password: '12345',
       driver_license: '1234-xxx-xxx-xx',
     });
-  });
 
-  it('should be able to authenticate a user', async () => {
     const result = await authenticateUserUseCase.execute({
       email: 'test@rentalx.com',
       password: '12345',
@@ -31,7 +31,14 @@ describe('[AuthenticateUserUseCase]', () => {
     expect(result).toHaveProperty('token');
   });
 
-  it('should not be able to authenticate a user nonexistent', () => {
+  it('should not be able to authenticate a user nonexistent', async () => {
+    await createUserUseCase.execute({
+      name: 'user test',
+      email: 'test@rentalx.com',
+      password: '12345',
+      driver_license: '1234-xxx-xxx-xx',
+    });
+
     expect(async () =>
       authenticateUserUseCase.execute({
         email: 'unknow@rentalx.com',
@@ -40,7 +47,14 @@ describe('[AuthenticateUserUseCase]', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
 
-  it('should not be able to authenticate a user with password incorrect', () => {
+  it('should not be able to authenticate a user with password incorrect', async () => {
+    await createUserUseCase.execute({
+      name: 'user test',
+      email: 'test@rentalx.com',
+      password: '12345',
+      driver_license: '1234-xxx-xxx-xx',
+    });
+
     expect(async () =>
       authenticateUserUseCase.execute({
         email: 'test@rentalx.com',
