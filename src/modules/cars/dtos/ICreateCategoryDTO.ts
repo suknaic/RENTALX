@@ -1,6 +1,6 @@
-interface ICreateCategoriDTO {
+interface ICreateCategoryDTO {
   name: string;
   description: string;
 }
 
-export { ICreateCategoriDTO };
+export { ICreateCategoryDTO };
