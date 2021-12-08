@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 
 import { FakeRentalRepository } from '@modules/rentals/repositories/fake/FakeRentalRepository';
+import { DayjsDateProvider } from '@shared/container/providers/DateProvider/implementations/DayjsDateProvider';
 import { AppError } from '@shared/error/AppError';
 
 import { CreateRentalUseCase } from './CreateRentalUseCase';
@@ -8,12 +9,16 @@ import { CreateRentalUseCase } from './CreateRentalUseCase';
 describe('[CreateRentalsUseCase]', () => {
   let fakeRentalRepository: FakeRentalRepository;
   let createRentalUseCase: CreateRentalUseCase;
-
-  const add24hours = dayjs().add(24, 'hour').toDate();
+  let fakeDateProvider: DayjsDateProvider;
+  const add24hours = dayjs().add(1, 'day').toDate();
 
   beforeEach(() => {
+    fakeDateProvider = new DayjsDateProvider();
     fakeRentalRepository = new FakeRentalRepository();
-    createRentalUseCase = new CreateRentalUseCase(fakeRentalRepository);
+    createRentalUseCase = new CreateRentalUseCase(
+      fakeRentalRepository,
+      fakeDateProvider
+    );
   });
 
   it('should be able to create a rental', async () => {
