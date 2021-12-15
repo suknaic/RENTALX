@@ -13,7 +13,7 @@ describe('[ListAvailableCarUseCase]', () => {
     await fakeCarsRepository.create({
       name: 'palio',
       description: 'carro ruim',
-      dayly_rate: 50,
+      daily_rate: 50,
       license_plate: 'ABCD-4321',
       fine_amount: 4000,
       brand: 'fiat',
@@ -22,7 +22,7 @@ describe('[ListAvailableCarUseCase]', () => {
     await fakeCarsRepository.create({
       name: 'fiesta',
       description: 'consome muita gasolina',
-      dayly_rate: 80,
+      daily_rate: 80,
       license_plate: 'ABCD-5898',
       fine_amount: 13000,
       brand: 'ford',

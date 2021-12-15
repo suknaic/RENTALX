@@ -4,7 +4,7 @@ interface ICreateCarDTO {
   id?: string;
   name: string;
   description: string;
-  dayly_rate: number;
+  daily_rate: number;
   license_plate: string;
   fine_amount: number;
   brand: string;

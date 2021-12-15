@@ -7,7 +7,7 @@ import { AppError } from '@shared/error/AppError';
 interface IRequest {
   name: string;
   description: string;
-  dayly_rate: number;
+  daily_rate: number;
   license_plate: string;
   fine_amount: number;
   brand: string;
@@ -24,7 +24,7 @@ class CreateCarUseCase {
   async execulte({
     name,
     description,
-    dayly_rate,
+    daily_rate,
     license_plate,
     fine_amount,
     brand,
@@ -39,7 +39,7 @@ class CreateCarUseCase {
     const car = await this.carRepository.create({
       name,
       description,
-      dayly_rate,
+      daily_rate,
       license_plate,
       fine_amount,
       brand,

@@ -16,7 +16,7 @@ describe('[CreateCarUseCase]', () => {
     await createCarUseCase.execulte({
       name: 'nameCar',
       description: 'descriptionCar',
-      dayly_rate: 100,
+      daily_rate: 100,
       license_plate: 'abcd-1234',
       fine_amount: 500,
       brand: 'ford',
@@ -28,7 +28,7 @@ describe('[CreateCarUseCase]', () => {
     await createCarUseCase.execulte({
       name: 'car test',
       description: 'test to create a new car',
-      dayly_rate: 10,
+      daily_rate: 10,
       license_plate: 'test-1234-1234',
       fine_amount: 650,
       brand: 'brand-test',
@@ -39,7 +39,7 @@ describe('[CreateCarUseCase]', () => {
       await createCarUseCase.execulte({
         name: 'car test',
         description: 'test failt to creeate duplicate car',
-        dayly_rate: 5,
+        daily_rate: 5,
         license_plate: 'test-1234-1234',
         fine_amount: 700,
         brand: 'brand-test',
@@ -52,7 +52,7 @@ describe('[CreateCarUseCase]', () => {
     await createCarUseCase.execulte({
       name: 'car test',
       description: 'test failt to creeate duplicate car',
-      dayly_rate: 5,
+      daily_rate: 5,
       license_plate: 'test-1234-1234',
       fine_amount: 700,
       brand: 'brand-test',

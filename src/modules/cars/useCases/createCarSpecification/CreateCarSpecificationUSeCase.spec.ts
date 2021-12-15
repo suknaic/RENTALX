@@ -23,7 +23,7 @@ describe('[CreateCarSpecificationUseCase]', () => {
       name: 'new beetle',
       brand: 'volksvagen',
       category_id: 'asasdiasjdiasjd',
-      dayly_rate: 100,
+      daily_rate: 100,
       description: 'carro pequeno para 2 pessoas',
       fine_amount: 50,
       license_plate: 'abcd-1234',

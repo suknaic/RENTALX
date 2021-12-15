@@ -8,7 +8,7 @@ class CreateCarController {
     const {
       name,
       description,
-      dayly_rate,
+      daily_rate,
       license_plate,
       fine_amount,
       brand,
@@ -20,7 +20,7 @@ class CreateCarController {
     const car = await createCarUseCase.execulte({
       name,
       description,
-      dayly_rate,
+      daily_rate,
       license_plate,
       fine_amount,
       brand,

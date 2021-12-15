@@ -47,7 +47,7 @@ class CarRepository implements ICarRepository {
   async create({
     name,
     description,
-    dayly_rate,
+    daily_rate,
     license_plate,
     fine_amount,
     brand,
@@ -58,7 +58,7 @@ class CarRepository implements ICarRepository {
     const car = this.repository.create({
       name,
       description,
-      dayly_rate,
+      daily_rate,
       license_plate,
       fine_amount,
       brand,
