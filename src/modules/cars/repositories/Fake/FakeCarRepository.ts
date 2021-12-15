@@ -9,6 +9,10 @@ class FakeCarRepository implements ICarRepository {
   constructor() {
     this.carRepository = [];
   }
+  async updateAvailable(id: string, available: boolean): Promise<void> {
+    const findIndex = this.carRepository.findIndex((car) => car.id === id);
+    this.carRepository[findIndex].available = available;
+  }
   async findById(id: string): Promise<Car> {
     const car = this.carRepository.find((car) => car.id === id);
     return car;
@@ -36,7 +40,7 @@ class FakeCarRepository implements ICarRepository {
 
     return carsAvailability;
   }
-  async findByLincensePlate(license_plate: string): Promise<Car> {
+  async findByLicensePlate(license_plate: string): Promise<Car> {
     const car = this.carRepository.find(
       (car) => car.license_plate === license_plate
     );

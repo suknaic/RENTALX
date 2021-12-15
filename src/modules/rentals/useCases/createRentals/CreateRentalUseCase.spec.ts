@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 
+import { FakeCarRepository } from '@modules/cars/repositories/Fake/FakeCarRepository';
 import { FakeRentalRepository } from '@modules/rentals/repositories/fake/FakeRentalRepository';
 import { DayjsDateProvider } from '@shared/container/providers/DateProvider/implementations/DayjsDateProvider';
 import { AppError } from '@shared/error/AppError';
@@ -10,14 +11,17 @@ describe('[CreateRentalsUseCase]', () => {
   let fakeRentalRepository: FakeRentalRepository;
   let createRentalUseCase: CreateRentalUseCase;
   let fakeDateProvider: DayjsDateProvider;
+  let fakeCarRepository: FakeCarRepository;
   const add24hours = dayjs().add(1, 'day').toDate();
 
   beforeEach(() => {
     fakeDateProvider = new DayjsDateProvider();
     fakeRentalRepository = new FakeRentalRepository();
+    fakeCarRepository = new FakeCarRepository();
     createRentalUseCase = new CreateRentalUseCase(
       fakeRentalRepository,
-      fakeDateProvider
+      fakeDateProvider,
+      fakeCarRepository
     );
   });
 
