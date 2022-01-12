@@ -33,8 +33,8 @@ describe('[CreateCategoryUseCase]', () => {
 
     await createCategoryUseCase.execute(category);
 
-    expect(createCategoryUseCase.execute(category)).rejects.toBeInstanceOf(
-      AppError
-    );
+    await expect(
+      createCategoryUseCase.execute(category)
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

@@ -1,6 +1,6 @@
+import { ICreateCategoryDTO } from '@modules/cars/dtos/ICreateCategoryDTO';
 import { Category } from '@modules/cars/infra/typeorm/entities/Category';
 
-import { ICreateCategoriDTO } from '../../dtos/ICreateCategoryDTO';
 import { ICategoryRepository } from '../ICategoryRepository';
 
 class FakeCategoryRepository implements ICategoryRepository {
@@ -10,7 +10,7 @@ class FakeCategoryRepository implements ICategoryRepository {
     this.repository = [];
   }
 
-  async create({ name, description }: ICreateCategoriDTO): Promise<void> {
+  async create({ name, description }: ICreateCategoryDTO): Promise<void> {
     const categori = new Category();
 
     Object.assign(categori, {

@@ -9,6 +9,7 @@ class FakeRentalRepository implements IRentalRepository {
   constructor() {
     this.rentalRepository = [];
   }
+
   async create({
     car_id,
     user_id,
@@ -40,6 +41,17 @@ class FakeRentalRepository implements IRentalRepository {
     );
 
     return rental;
+  }
+
+  async findById(id: string): Promise<Rental> {
+    const rental = this.rentalRepository.find((rental) => rental.id === id);
+    return rental;
+  }
+  async findByUser(user_id: string): Promise<Rental[]> {
+    const rentals = this.rentalRepository.filter(
+      (rental) => rental.user_id === user_id
+    );
+    return rentals;
   }
 }
 

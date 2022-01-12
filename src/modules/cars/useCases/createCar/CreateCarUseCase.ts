@@ -21,7 +21,7 @@ class CreateCarUseCase {
     private carRepository: ICarRepository
   ) {}
 
-  async execulte({
+  async execute({
     name,
     description,
     daily_rate,
@@ -30,11 +30,11 @@ class CreateCarUseCase {
     brand,
     category_id,
   }: IRequest): Promise<Car> {
-    const carAlredyExists = await this.carRepository.findByLincensePlate(
+    const carAlreadyExists = await this.carRepository.findByLicensePlate(
       license_plate
     );
 
-    if (carAlredyExists) throw new AppError('Car alredy Existis');
+    if (carAlreadyExists) throw new AppError('Car alredy Existis');
 
     const car = await this.carRepository.create({
       name,

@@ -21,8 +21,8 @@ describe('[CreateCarSpecificationUseCase]', () => {
   it('should be able to add new specifications to the car', async () => {
     const car = await fakeCarRepository.create({
       name: 'new beetle',
-      brand: 'volksvagen',
-      category_id: 'asasdiasjdiasjd',
+      brand: 'Fiat',
+      category_id: 'category',
       daily_rate: 100,
       description: 'carro pequeno para 2 pessoas',
       fine_amount: 50,
@@ -42,7 +42,7 @@ describe('[CreateCarSpecificationUseCase]', () => {
     expect(car.specifications).toEqual(expect.arrayContaining([specification]));
   });
 
-  it('should not be able to add new specification to the car nonexits', async () => {
+  it('should not be able to add new specification to the car noExisting', async () => {
     const specification = await fakeSpecificationRepository.create({
       name: 'test specification',
       description: 'description',

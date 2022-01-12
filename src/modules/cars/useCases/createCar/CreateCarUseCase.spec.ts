@@ -13,53 +13,53 @@ describe('[CreateCarUseCase]', () => {
   });
 
   it('should be able to create a new Car', async () => {
-    await createCarUseCase.execulte({
+    await createCarUseCase.execute({
       name: 'nameCar',
       description: 'descriptionCar',
       daily_rate: 100,
       license_plate: 'abcd-1234',
       fine_amount: 500,
       brand: 'ford',
-      category_id: 'asdiasdiasdausdasd',
+      category_id: 'category',
     });
   });
 
   it('should not be able to create a new car with license_plate existente', async () => {
-    await createCarUseCase.execulte({
+    await createCarUseCase.execute({
       name: 'car test',
       description: 'test to create a new car',
       daily_rate: 10,
       license_plate: 'test-1234-1234',
       fine_amount: 650,
       brand: 'brand-test',
-      category_id: 'asdiasdiasdausdasd',
+      category_id: 'category',
     });
 
     expect(async () => {
-      await createCarUseCase.execulte({
+      await createCarUseCase.execute({
         name: 'car test',
-        description: 'test failt to creeate duplicate car',
+        description: 'test fail to create duplicate car',
         daily_rate: 5,
         license_plate: 'test-1234-1234',
         fine_amount: 700,
         brand: 'brand-test',
-        category_id: 'asdiasdiasdausdasd',
+        category_id: 'category',
       });
     }).rejects.toBeInstanceOf(AppError);
   });
 
   it('should be able create a new car available by default', async () => {
-    await createCarUseCase.execulte({
+    await createCarUseCase.execute({
       name: 'car test',
-      description: 'test failt to creeate duplicate car',
+      description: 'test fail to create duplicate car',
       daily_rate: 5,
       license_plate: 'test-1234-1234',
       fine_amount: 700,
       brand: 'brand-test',
-      category_id: 'asdiasdiasdausdasd',
+      category_id: 'category',
     });
 
-    const carTest = await fakeCarRepository.findByLincensePlate(
+    const carTest = await fakeCarRepository.findByLicensePlate(
       'test-1234-1234'
     );
 

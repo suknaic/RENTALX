@@ -50,7 +50,7 @@ describe('[ListAvailableCarUseCase]', () => {
     ]);
   });
 
-  it('should be able to list all car availabiliti for brand', async () => {
+  it('should be able to list all car availability for brand', async () => {
     const carAvailable = await listAvailableCarUseCase.execute({
       brand: 'ford',
     });
@@ -63,7 +63,7 @@ describe('[ListAvailableCarUseCase]', () => {
     );
   });
 
-  it('should be able to list all car availabiliti for category_id', async () => {
+  it('should be able to list all car availability for category_id', async () => {
     const allCarsAvailability = await listAvailableCarUseCase.execute({
       category_id: 'b205d457-452a-4e65-a7d1-b331b627307e',
     });

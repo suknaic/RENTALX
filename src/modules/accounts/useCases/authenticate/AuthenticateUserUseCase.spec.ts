@@ -39,12 +39,12 @@ describe('[AuthenticateUserUseCase]', () => {
       driver_license: '1234-xxx-xxx-xx',
     });
 
-    expect(async () =>
-      authenticateUserUseCase.execute({
+    expect(async () => {
+      await authenticateUserUseCase.execute({
         email: 'unknow@rentalx.com',
-        password: 'unknowPassword',
-      })
-    ).rejects.toBeInstanceOf(AppError);
+        password: 'unExistingPassword',
+      });
+    }).rejects.toBeInstanceOf(AppError);
   });
 
   it('should not be able to authenticate a user with password incorrect', async () => {
@@ -55,7 +55,7 @@ describe('[AuthenticateUserUseCase]', () => {
       driver_license: '1234-xxx-xxx-xx',
     });
 
-    expect(async () =>
+    await expect(
       authenticateUserUseCase.execute({
         email: 'test@rentalx.com',
         password: 'invalid-password',
