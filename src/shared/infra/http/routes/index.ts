@@ -13,7 +13,7 @@ routes.use('/car', carRoutes);
 routes.use('/categories', categoryRoutes);
 routes.use('/specifications', SpecificationsRoutes);
 routes.use('/users', usersRoutes);
-routes.use('/sessions', authenticateRoutes);
+routes.use('/', authenticateRoutes);
 routes.use('/rental', rentalRoutes);
 
 export default routes;
