@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { IUSerRepository } from '@modules/accounts/repositories/IUserRepository';
 import { IUserTokenRepository } from '@modules/accounts/repositories/IUserTokenRepository';
 import { IDateProvider } from '@shared/container/providers/DateProvider/model/IDateProvider';
+import { IMailProvider } from '@shared/container/providers/MailProvider/model/IMailProvider';
 import { AppError } from '@shared/error/AppError';
 
 @injectable()
@@ -14,7 +15,9 @@ class SendForgotPasswordMailUseCase {
     @inject('IUserTokenRepository')
     private usersTokenRepository: IUserTokenRepository,
     @inject('IDateProvider')
-    private dateProvider: IDateProvider
+    private dateProvider: IDateProvider,
+    @inject('IMailProvider')
+    private mailProvider: IMailProvider
   ) {}
 
   async execute(email: string): Promise<void> {
@@ -31,6 +34,12 @@ class SendForgotPasswordMailUseCase {
       user_id: user.id,
       expires_date,
     });
+
+    await this.mailProvider.sendMail(
+      email,
+      'Recuperação de senha',
+      `link para o email: ${token}`
+    );
   }
 }
 
