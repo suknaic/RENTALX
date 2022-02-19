@@ -1,3 +1,5 @@
+import fs from 'fs';
+import Handlebars from 'handlebars';
 import nodemailer, { Transporter } from 'nodemailer';
 
 import { IMailProvider } from '../model/IMailProvider';
@@ -23,13 +25,23 @@ class EtherealMailProvider implements IMailProvider {
       .catch((error) => console.error(error));
   }
 
-  async sendMail(to: string, subject: string, body: string): Promise<void> {
+  async sendMail(
+    to: string,
+    subject: string,
+    variables: any,
+    path: string
+  ): Promise<void> {
+    const templateFileContent = fs.readFileSync(path).toString('utf-8');
+
+    const templateParse = Handlebars.compile(templateFileContent);
+
+    const templateHTML = templateParse(variables);
+
     const message = await this.client.sendMail({
       to,
       from: 'Rental <noreplay@rentalx.com>',
       subject,
-      text: body,
-      html: body,
+      html: templateHTML,
     });
 
     console.log('Message sent: %s', message.messageId);
